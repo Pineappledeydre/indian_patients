@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
     ```python
     import pandas as pd
-    data = pd.read_csv('liver_disease.csv')
+    df = pd.read_csv('liver_disease.csv')
     ```
 
 2. **Предобработка данных:** Для корректной работы модели важно провести обработку данных (удаление пропусков, нормализация, балансировка данных и т.д.).
