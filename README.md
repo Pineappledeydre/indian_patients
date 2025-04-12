@@ -1,100 +1,120 @@
-# Обзор проекта
+# **Project Overview**
 
-Данный проект направлен на прогнозирование заболеваний печени на основе медицинских данных. Используются различные алгоритмы машинного обучения для классификации людей как имеющих заболевание печени или нет, на основе нескольких медицинских признаков. Целью является создание эффективной предсказательной модели, которая может помочь медицинским специалистам в диагностике заболеваний печени.
+This project focuses on predicting liver disease based on medical data. Various machine learning algorithms are used to classify individuals as either having liver disease or not, based on several medical features. The goal is to build an effective predictive model that can assist medical professionals in diagnosing liver-related conditions.
 
-## Требования
+---
 
-Для запуска проекта необходимо установить следующие библиотеки Python:
+## **Requirements**
 
-- **pandas**: Для работы с данными и анализа.
-- **numpy**: Для численных вычислений.
-- **matplotlib**: Для визуализации данных.
-- **seaborn**: Для улучшенной визуализации.
-- **scikit-learn**: Для алгоритмов машинного обучения и инструментов.
-- **imbalanced-learn**: Для работы с несбалансированными данными (SMOTE для увеличения выборки).
-- **xgboost**: Для градиентного бустинга.
+To run this project, make sure the following Python libraries are installed:
 
-Для установки всех необходимых зависимостей проекта вы можете использовать файл `requirements.txt`. Для этого выполните следующую команду:
+- **pandas** – For data manipulation and analysis  
+- **numpy** – For numerical operations  
+- **matplotlib** – For data visualization  
+- **seaborn** – For enhanced visualizations  
+- **scikit-learn** – For machine learning algorithms and tools  
+- **imbalanced-learn** – For handling imbalanced datasets (e.g., SMOTE for oversampling)  
+- **xgboost** – For gradient boosting classification
+
+To install all required dependencies, you can use the `requirements.txt` file by running:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Данные
+---
 
-В проекте используется набор данных, содержащий медицинские признаки, такие как:
+## **Dataset**
 
-- Возраст
-- Пол
-- Уровень билирубина
-- Уровень альбумина
-- Уровень щелочной фосфатазы
-- Уровень SGOT (АСТ)
-- Уровень SGPT (АЛТ)
-- Уровень общего белка
-- Протромбиновое время
-- и другие...
+The dataset includes medical features such as:
 
-Целевая переменная — наличие заболевания печени (бинарная классификация: 0 — нет заболевания, 1 — есть заболевание печени).
+- Age  
+- Gender  
+- Bilirubin levels  
+- Albumin level  
+- Alkaline phosphatase  
+- SGOT (AST)  
+- SGPT (ALT)  
+- Total protein  
+- Prothrombin time  
+- And more...
 
-## Шаги для запуска проекта
+The target variable is the **presence of liver disease**, formatted as a binary classification task (0 = No disease, 1 = Liver disease).
 
-1. **Загрузка данных:** Загрузите набор данных о заболеваниях печени с помощью pandas и ознакомьтесь с ним.
+---
 
-    ```python
-    import pandas as pd
-    df = pd.read_csv('liver_disease.csv')
-    ```
+## **Steps to Run the Project**
 
-2. **Предобработка данных:** Для корректной работы модели важно провести обработку данных (удаление пропусков, нормализация, балансировка данных и т.д.).
+1. **Load the data**  
+   Load the liver disease dataset using pandas and explore it:
 
-3. **Обучение моделей:** В проекте использовались различные модели машинного обучения, такие как:
+   ```python
+   import pandas as pd
+   df = pd.read_csv('liver_disease.csv')
+   ```
 
-   - DecisionTreeClassifier
-   - RandomForestClassifier
-   - XGBClassifier
-   - KNeighborsClassifier
-   - MLPClassifier
+2. **Data Preprocessing**  
+   Proper data preparation is crucial and includes handling missing values, scaling features, and balancing the dataset.
 
-4. **Оценка модели:** Модели были оценены на тестовых данных. Результаты классификации для каждой модели представлены с использованием следующих метрик:
+3. **Train Machine Learning Models**  
+   The following models were trained and evaluated:
 
-   - **Точность (Accuracy):** Доля правильных предсказаний.
-   - **Полнота (Recall):** Способность модели правильно выявлять случаи заболевания печени.
-   - **Точность (Precision):** Способность модели правильно классифицировать положительные случаи.
-   - **F1-оценка:** Баланс между точностью и полнотой.
-   - **ROC-AUC:** Площадь под кривой ROC.
+   - `DecisionTreeClassifier`  
+   - `RandomForestClassifier`  
+   - `XGBClassifier`  
+   - `KNeighborsClassifier`  
+   - `MLPClassifier`  
 
-5. **Настройка гиперпараметров:** Для улучшения качества моделей был применен поиск по сетке (GridSearchCV) и случайный поиск (RandomizedSearchCV) для оптимизации гиперпараметров.
+4. **Model Evaluation**  
+   Models were evaluated on the test set using the following metrics:
 
-## Заключение
+   - **Accuracy** – The proportion of correct predictions  
+   - **Recall** – The model’s ability to identify liver disease cases  
+   - **Precision** – The model’s ability to correctly classify positive cases  
+   - **F1 Score** – The balance between precision and recall  
+   - **ROC-AUC** – Area under the ROC curve
 
-Проект продемонстрировал возможности машинного обучения для предсказания заболеваний печени. Было протестировано несколько моделей, и результаты показали, что ансамблевые методы, такие как случайный лес и XGBoost, превосходят отдельные классификаторы по точности и другим метрикам.
+5. **Hyperparameter Tuning**  
+   Model performance was further improved using hyperparameter optimization techniques such as:
 
-## Перспективы
+   - `GridSearchCV` (grid search)
+   - `RandomizedSearchCV` (randomized search)
 
-Будущие улучшения могут включать:
+---
 
-- Сбор большего количества медицинских данных для улучшения обобщающих способностей моделей.
-- Использование более сложных моделей, таких как нейронные сети.
-- Применение более продвинутых методов обработки несбалансированных данных.
+## **Conclusion**
 
-## Как запустить
+This project demonstrates the potential of machine learning for predicting liver disease. Several models were tested, and results show that ensemble methods like Random Forest and XGBoost outperform individual classifiers in terms of accuracy and other performance metrics.
 
-1. Клонируйте репозиторий:
+---
 
-    ```bash
-    git clone <your_repository_link>
-    cd <your_project_directory>
-    ```
+## **Future Improvements**
 
-2. Установите зависимости:
+Potential future enhancements include:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+- Collecting a larger dataset to improve model generalization  
+- Exploring more advanced models such as deep neural networks  
+- Applying more sophisticated techniques for handling class imbalance
 
-3. Запустите Jupyter Notebook или Python-скрипт для анализа данных и обучения моделей:
+---
 
-    ```bash
-    jupyter notebook
-    ```
+## **How to Run**
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <your_repository_link>
+   cd <your_project_directory>
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the notebook or Python script for data analysis and model training:**
+
+   ```bash
+   jupyter notebook
+   ```
